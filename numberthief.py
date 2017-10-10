@@ -7,20 +7,22 @@ displaying the same combination more than once.
 Submit a fully detailed Showcase for your program.'''
 
 from random import shuffle
+import itertools
 
 fourDigits = input("What are the secret digits? : ")
 
 while not fourDigits.isnumeric() or len(fourDigits)!=4:
 	fourDigits = input("They are not four numbers. Enter more carefully please. : ")
 
-#badway:
+#create list with the code digits
 digit=[]
 for num in fourDigits: 
 	digit.append(num)
 
-print ("%s%s%s%s" %(digit[0],digit[1],digit[2],digit[3]))
+#print ("%s%s%s%s" %(digit[0],digit[1],digit[2],digit[3]))
 
 
+#bad way
 combiStore=[]
 for i in range(0,100):
 	shuffle(digit)
@@ -36,5 +38,7 @@ for i in range(0,100):
 print(len(combiStore))
 print (combiStore)
 
+#good way
+print(set(itertools.permutations(digit)))
 
 
